@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ## Branch naming convention
-- *feature/issue_id>-user-description*
+- *feature/<issue_id>-user-description*
 - *bugfix/<issue_id>-user-description*
 - *refactor/<issue_id>-user-description*
 - *test/<issue_id>-user-description*
