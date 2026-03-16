@@ -1,29 +1,37 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: Center(
-        child: Column(
-          children: [
-            CupertinoFormSection(
-              children: [
-                CupertinoTextFormFieldRow(
-                  prefix: Text("Username"),
-                  placeholder: "mreplenier",
-                ),
-                CupertinoTextFormFieldRow(
-                  prefix: Text("Password"),
-                  obscureText: true,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 300),
+            child: Form(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      label: Text("username")
+                    )
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      label: Text("password")
+                    )
+                  )
+                ]
+              )
+            )
+          ),
+        )
+      )
     );
   }
 }
+
