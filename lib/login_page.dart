@@ -18,7 +18,8 @@ class LoginPage extends StatelessWidget {
                   TextFormField(
                     decoration: InputDecoration(
                       label: Text("username")
-                    )
+                    ),
+                    cursorWidth: 40jjj
                   ),
                   TextFormField(
                     decoration: InputDecoration(
