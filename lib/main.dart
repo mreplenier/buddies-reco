@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart'; // N'oublie pas d'importer ton fichier !
+import 'login_page.dart';
+import 'home_page.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(BuddiesReco());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class BuddiesReco extends StatelessWidget {
+  const BuddiesReco({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Buddies Reco',
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(), // C'est ici qu'on lance ta page
+      home: LoginPage(),
+      title: "Buddies Reco"
     );
   }
 }
