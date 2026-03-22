@@ -11,6 +11,14 @@ class BuddiesReco extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage(), title: "Buddies Reco");
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: MaterialApp(
+        home: LoginPage(),
+        title: "Buddies Reco"
+      ),
+    );
   }
 }
