@@ -14,11 +14,18 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
   final List<String> entries = <String>[];
-  final List<int> colorCodes = <int>[];
+
+  // fonction de text editor pour le lien spotify
+  TextEditingController _linkText = TextEditingController();
+
+  //fonction d'ajout de lien spotify
+  void _addLinkFunction() {
+    _dialogBuilder(context);
+  }
 
   @override
   Widget build(BuildContext context) {
-    late final List<Widget> pages = [
+    final List<Widget> pages = [
       Center(
         child: Column(
           children: [
@@ -30,9 +37,8 @@ class _HomePageState extends State<HomePage> {
                 ), // pour ajouter des marges autour de la liste
                 itemCount: entries.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
+                  return SizedBox(
                     height: 120,
-                    color: Colors.amber[colorCodes[index]],
                     child: Center(child: Text(entries[index])),
                   );
                 },
@@ -64,12 +70,7 @@ class _HomePageState extends State<HomePage> {
       body: pages[currentIndex],
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            entries.add("Nouveau lien spotify");
-            colorCodes.add(100);
-          });
-        },
+        onPressed: _addLinkFunction,
         foregroundColor: Colors.white,
         backgroundColor: Colors.green,
         child: const Icon(Icons.add),
@@ -93,6 +94,47 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Nouveau lien'),
+          content: TextFormField(
+            controller: _linkText,
+            decoration: InputDecoration(label: Text("lien spotify")),
+            cursorWidth: 1,
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Retour'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _linkText.clear();
+              },
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Ajouter'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  entries.add(_linkText.text);
+                });
+                _linkText.clear();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
