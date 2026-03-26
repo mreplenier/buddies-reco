@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,9 +13,55 @@ class _HomePageState extends State<HomePage> {
   // 1. LA MÉMOIRE : l'onglet actif
   int currentIndex = 0;
 
+  final List<String> entries = <String>[
+    'Lien 1',
+    'Lien 2',
+    'Lien 3',
+    'Lien 1',
+    'Lien 2',
+    'Lien 3',
+    'Lien 1',
+    'Lien 2',
+    'Lien 3',
+  ];
+  final List<int> colorCodes = <int>[
+    600,
+    500,
+    100,
+    600,
+    500,
+    100,
+    600,
+    500,
+    100,
+  ];
+
   // 2. LA LISTE DES PAGES : ce qu'on affiche au milieu
-  final List<Widget> pages = [
-    const Center(child: Text('🏠 Page Accueil')),
+  late final List<Widget> pages = [
+    Center(
+      child: Column(
+        children: [
+          Text('🏠 Page Accueil'),
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.all(
+                30,
+              ), // pour ajouter des marges autour de la liste
+              itemCount: entries.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  height: 120,
+                  color: Colors.amber[colorCodes[index]],
+                  child: Center(child: Text(entries[index])),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) =>
+                  const Divider(),
+            ),
+          ),
+        ],
+      ),
+    ),
     const Center(child: Text('🔍 Page Recherche')),
     const Center(child: Text('👤 Page Profil')),
     const Center(
@@ -37,6 +85,12 @@ class _HomePageState extends State<HomePage> {
       // 3. LE CONTENU : il change selon l'index
       body: pages[currentIndex],
 
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.green,
+        child: const Icon(Icons.add),
+      ),
       // 4. LA BARRE DE NAVIGATION
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex, // Allume l'icône selon la mémoire

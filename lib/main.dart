@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';
+//import 'login_page.dart';
 import 'home_page.dart';
-
 
 void main() {
   runApp(BuddiesReco());
@@ -12,9 +11,6 @@ class BuddiesReco extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: LoginPage(),
-      title: "Buddies Reco"
-    );
+    return MaterialApp(home: HomePage(), title: "Buddies Reco");
   }
 }

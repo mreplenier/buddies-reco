@@ -16,23 +16,18 @@ class LoginPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextFormField(
-                    decoration: InputDecoration(
-                      label: Text("username")
-                    ),
-                    cursorWidth: 40jjj
+                    decoration: InputDecoration(label: Text("username")),
+                    cursorWidth: 40,
                   ),
                   TextFormField(
-                    decoration: InputDecoration(
-                      label: Text("password")
-                    )
-                  )
-                ]
-              )
-            )
+                    decoration: InputDecoration(label: Text("password")),
+                  ),
+                ],
+              ),
+            ),
           ),
-        )
-      )
+        ),
+      ),
     );
   }
 }
-
