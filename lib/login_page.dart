@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -19,6 +20,8 @@ class LoginPage extends StatelessWidget {
   }
 }
 
+
+
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
 
@@ -28,14 +31,14 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
 
-  // Définition des Variables  
-  final _trueUsername = "orlane";
-  final _truePassword = "chazelle";
+// Définition des Variables  
+final _trueUsername = "orlane";
+final _truePassword = "chazelle";
 
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+final _usernameController = TextEditingController();
+final _passwordController = TextEditingController();
 
-  final _loginFormKey = GlobalKey<FormState>();
+final _loginFormKey = GlobalKey<FormState>();
 
   // Définitions des fonctions
   void _testLogin () {
@@ -44,6 +47,9 @@ class _LoginFormState extends State<LoginForm> {
   //     if (_usernameController.text == _trueUsername && _passwordController.text == _truePassword) {
         
   //     }
+    setState(() {});
+    Text(_loginFormKey.currentState!.validate().toString());
+
 
   }
 
@@ -77,7 +83,8 @@ class _LoginFormState extends State<LoginForm> {
             decoration: const InputDecoration(
               label: Text("password"),
               border: OutlineInputBorder()
-            )
+            ),
+            obscureText: true
           ),
           const SizedBox(height: 40),
           ElevatedButton(
@@ -89,3 +96,5 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 }
+
+
