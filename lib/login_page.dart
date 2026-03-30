@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             LoginTitle(),
-            SizedBox(height: 100),
+            const SizedBox(height: 75),
             LoginForm()
           ]
         )
@@ -39,8 +39,7 @@ class LoginTitle extends StatelessWidget {
           "Buddie's ",
           style: GoogleFonts.pacifico(fontSize: _fontSize),
         ),
-        Text(
-          "Reco",
+        Text("Reco",
           style: GoogleFonts.pacifico(fontSize: _fontSize, color: Theme.of(context).primaryColor),
         ),
       ],
@@ -93,6 +92,17 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Align(
+              alignment: AlignmentGeometry.centerStart,
+              child: Text(
+                "Login",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600
+                )
+              ),
+            ),
+            const SizedBox(height: 20),
             TextFormField(
               controller: _usernameController,
               validator: (value) {
@@ -105,6 +115,7 @@ class _LoginFormState extends State<LoginForm> {
                 label: Text("username"),
                 border: OutlineInputBorder()
               ),
+              textInputAction: TextInputAction.next
             ),
             const SizedBox(height: 20),
             TextFormField(
@@ -119,10 +130,11 @@ class _LoginFormState extends State<LoginForm> {
                 label: Text("password"),
                 border: OutlineInputBorder()
               ),
-              obscureText: true
+              obscureText: true,
+              textInputAction: TextInputAction.done
             ),
             const SizedBox(height: 40),
-            ElevatedButton(
+            OutlinedButton(
               onPressed: _testLogin,
               child: const Text("Se connecter")
             )
