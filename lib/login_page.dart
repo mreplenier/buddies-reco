@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -11,34 +11,39 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             LoginTitle(),
-            ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 300),
-              child: LoginForm()
-            )
-          ],
+            SizedBox(height: 100),
+            LoginForm()
+          ]
         )
       )
     );
   }
 }
 
+
+
 class LoginTitle extends StatelessWidget {
   const LoginTitle({super.key});
 
+  final double _fontSize = 50; 
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        "Buddie's Reco",
-        style: TextStyle(
-          fontSize: 40,
-          fontFamily: ""
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "Buddie's ",
+          style: GoogleFonts.pacifico(fontSize: _fontSize),
         ),
-    
-      )
+        Text(
+          "Reco",
+          style: GoogleFonts.pacifico(fontSize: _fontSize, color: Theme.of(context).primaryColor),
+        ),
+      ],
     );
   }
 }
@@ -54,11 +59,11 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
 
-// Définition des Variables  
-final _usernameController = TextEditingController();
-final _passwordController = TextEditingController();
+  // Définition des Variables  
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
-final _loginFormKey = GlobalKey<FormState>();
+  final _loginFormKey = GlobalKey<FormState>();
 
   // Définitions des fonctions
   void _testLogin () {
@@ -81,46 +86,49 @@ final _loginFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _loginFormKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextFormField(
-            controller: _usernameController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Le champ doit être rempli.";
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              label: Text("username"),
-              border: OutlineInputBorder()
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: 300),
+      child: Form(
+        key: _loginFormKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFormField(
+              controller: _usernameController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Le champ doit être rempli.";
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                label: Text("username"),
+                border: OutlineInputBorder()
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          TextFormField(
-            controller: _passwordController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Le champ doit être rempli.";
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              label: Text("password"),
-              border: OutlineInputBorder()
+            const SizedBox(height: 20),
+            TextFormField(
+              controller: _passwordController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Le champ doit être rempli.";
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                label: Text("password"),
+                border: OutlineInputBorder()
+              ),
+              obscureText: true
             ),
-            obscureText: true
-          ),
-          const SizedBox(height: 40),
-          ElevatedButton(
-            onPressed: _testLogin,
-            child: const Text("Se connecter")
-          )
-        ]
-      )
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: _testLogin,
+              child: const Text("Se connecter")
+            )
+          ]
+        )
+      ),
     );
   }
 }
