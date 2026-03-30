@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 
@@ -9,12 +10,34 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 300),
-            child: LoginForm()
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            LoginTitle(),
+            ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 300),
+              child: LoginForm()
+            )
+          ],
         )
+      )
+    );
+  }
+}
+
+class LoginTitle extends StatelessWidget {
+  const LoginTitle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        "Buddie's Reco",
+        style: TextStyle(
+          fontSize: 40,
+          fontFamily: ""
+        ),
+    
       )
     );
   }
@@ -32,9 +55,6 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
 
 // Définition des Variables  
-final _trueUsername = "orlane";
-final _truePassword = "chazelle";
-
 final _usernameController = TextEditingController();
 final _passwordController = TextEditingController();
 
@@ -43,14 +63,11 @@ final _loginFormKey = GlobalKey<FormState>();
   // Définitions des fonctions
   void _testLogin () {
 
-  //   if (_loginFormKey.currentState!.validate()) {
-  //     if (_usernameController.text == _trueUsername && _passwordController.text == _truePassword) {
-        
-  //     }
-    setState(() {});
-    Text(_loginFormKey.currentState!.validate().toString());
-
-
+    if (_loginFormKey.currentState!.validate()) {
+      debugPrint("username: ${_usernameController.text}");
+      debugPrint("password: ${_passwordController.text}");
+      // setState(() {});
+    }
   }
 
   // Permet de libérer la mémoire si le formulaire est détruit
@@ -68,10 +85,15 @@ final _loginFormKey = GlobalKey<FormState>();
       key: _loginFormKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextFormField(
             controller: _usernameController,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Le champ doit être rempli.";
+              }
+              return null;
+            },
             decoration: const InputDecoration(
               label: Text("username"),
               border: OutlineInputBorder()
@@ -80,6 +102,12 @@ final _loginFormKey = GlobalKey<FormState>();
           const SizedBox(height: 20),
           TextFormField(
             controller: _passwordController,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Le champ doit être rempli.";
+              }
+              return null;
+            },
             decoration: const InputDecoration(
               label: Text("password"),
               border: OutlineInputBorder()
@@ -89,7 +117,7 @@ final _loginFormKey = GlobalKey<FormState>();
           const SizedBox(height: 40),
           ElevatedButton(
             onPressed: _testLogin,
-            child: const Text("Valider")
+            child: const Text("Se connecter")
           )
         ]
       )
