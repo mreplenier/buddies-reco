@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 //import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (BuildContext context, int index) {
                   return SizedBox(
                     height: 120,
-                    child: Center(child: Text(entries[index])),
+                    child: Center(child: Image.network(entries[index])),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
@@ -124,12 +126,18 @@ class _HomePageState extends State<HomePage> {
                 textStyle: Theme.of(context).textTheme.labelLarge,
               ),
               child: const Text('Ajouter'),
-              onPressed: () {
+              onPressed: () async {
+                String url = _linkText.text;
                 Navigator.of(context).pop();
-                setState(() {
-                  entries.add(_linkText.text);
-                });
                 _linkText.clear();
+                var responseJson = jsonDecode(
+                  (await http.get(
+                    Uri.parse('https://open.spotify.com/oembed?url=$url'),
+                  )).body,
+                );
+                setState(() {
+                  entries.add(responseJson['thumbnail_url']);
+                });
               },
             ),
           ],
