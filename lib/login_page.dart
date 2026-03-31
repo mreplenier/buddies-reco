@@ -113,10 +113,8 @@ class _LoginFormState extends State<LoginForm> {
               alignment: AlignmentGeometry.centerStart,
               child: Text(
                 "Login",
-                style: GoogleFonts.roboto(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600
-                )
+                style: TextTheme.of(context).titleLarge
+                
               ),
             ),
             const SizedBox(height: 20),
@@ -159,7 +157,7 @@ class _LoginFormState extends State<LoginForm> {
                   foregroundColor: Colors.white
                 ),
                 onPressed: _testLogin,
-                child: const Text("Se connecter")
+                child: Text("Se connecter")
               ),
             )
           ]

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'login_page.dart';
 import 'home_page.dart';
 
@@ -17,7 +18,11 @@ class BuddiesReco extends StatelessWidget {
       },
       child: MaterialApp(
         home: LoginPage(),
-        title: "Buddies Reco"
+        title: "Buddies Reco",
+        theme: ThemeData(
+          textTheme: GoogleFonts.robotoTextTheme(),
+          
+        )
       ),
     );
   }
