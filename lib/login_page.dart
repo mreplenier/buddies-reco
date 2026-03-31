@@ -7,20 +7,37 @@ class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     body: SafeArea(
+  //       child: Column(
+  //         mainAxisAlignment: MainAxisAlignment.center,
+  //         children: [
+  //           const LoginTitle(),
+  //           const SizedBox(height: 75),
+  //           const LoginForm()
+  //         ]
+  //       )
+  //     )
+  //   );
+  // }
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            LoginTitle(),
-            const SizedBox(height: 75),
-            LoginForm()
-          ]
-        )
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const LoginTitle(),
+              const SizedBox(height: 75),
+              const LoginForm()
+            ]
+          ),
+        ),
       )
     );
   }
+
 }
 
 
@@ -85,8 +102,8 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: 300),
+    return SizedBox(
+      width: 300,
       child: Form(
         key: _loginFormKey,
         child: Column(
@@ -96,7 +113,7 @@ class _LoginFormState extends State<LoginForm> {
               alignment: AlignmentGeometry.centerStart,
               child: Text(
                 "Login",
-                style: TextStyle(
+                style: GoogleFonts.roboto(
                   fontSize: 20,
                   fontWeight: FontWeight.w600
                 )
@@ -134,9 +151,16 @@ class _LoginFormState extends State<LoginForm> {
               textInputAction: TextInputAction.done
             ),
             const SizedBox(height: 40),
-            OutlinedButton(
-              onPressed: _testLogin,
-              child: const Text("Se connecter")
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  foregroundColor: Colors.white
+                ),
+                onPressed: _testLogin,
+                child: const Text("Se connecter")
+              ),
             )
           ]
         )
