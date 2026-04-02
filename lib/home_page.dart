@@ -40,7 +40,31 @@ class _HomePageState extends State<HomePage> {
                 itemCount: entries.length,
                 itemBuilder: (BuildContext context, int index) {
                   return SizedBox(
-                    child: Center(child: Image.network(entries[index])),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 90,
+                          child: Image.network(entries[index]),
+                        ),
+                        Expanded(
+                          flex: 10,
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  entries.removeAt(
+                                    index,
+                                  ); // L'action est À L'INTÉRIEUR !
+                                });
+                              },
+                              icon: const Icon(Icons.remove_circle),
+                              color: Colors.red[400],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
