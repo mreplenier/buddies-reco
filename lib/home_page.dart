@@ -40,7 +40,6 @@ class _HomePageState extends State<HomePage> {
                 itemCount: entries.length,
                 itemBuilder: (BuildContext context, int index) {
                   return SizedBox(
-                    height: 120,
                     child: Center(child: Image.network(entries[index])),
                   );
                 },
