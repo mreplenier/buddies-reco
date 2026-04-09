@@ -154,7 +154,7 @@ void dispose() {
               ),
               child: const Text('Ajouter'),
               onPressed: () async {
-                String url = _linkText.text;
+                final String url = _linkText.text;
                 Navigator.of(context).pop();
                 _linkText.clear();
                 var responseJson = jsonDecode(
