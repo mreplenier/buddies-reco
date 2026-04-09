@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   final List<String> entries = <String>[];
 
   // fonction de text editor pour le lien spotify
-  TextEditingController _linkText = TextEditingController();
+  final TextEditingController _linkText = TextEditingController();
 
   //fonction d'ajout de lien spotify
   void _addLinkFunction() {
