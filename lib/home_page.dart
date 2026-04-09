@@ -157,7 +157,7 @@ void dispose() {
                 final String url = _linkText.text;
                 Navigator.of(context).pop();
                 _linkText.clear();
-                var responseJson = jsonDecode(
+                final Map<String, dynamic> responseJson = jsonDecode(
                   (await http.get(
                     Uri.parse('https://open.spotify.com/oembed?url=$url'),
                   )).body,
