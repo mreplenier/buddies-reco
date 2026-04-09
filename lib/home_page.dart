@@ -19,7 +19,11 @@ class _HomePageState extends State<HomePage> {
 
   // fonction de text editor pour le lien spotify
   final TextEditingController _linkText = TextEditingController();
-
+@override
+void dispose() {
+  _linkText.dispose();
+  super.dispose();
+}
   //fonction d'ajout de lien spotify
   void _addLinkFunction() {
     _dialogBuilder(context);
