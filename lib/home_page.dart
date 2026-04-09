@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 //import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -43,29 +45,44 @@ void dispose() {
                 ), // pour ajouter des marges autour de la liste
                 itemCount: entries.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    child: Row(
+                  return Card(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          flex: 90,
-                          child: Image.network(entries[index]),
-                        ),
-                        Expanded(
-                          flex: 10,
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: IconButton(
+                        Row(
+                          children: [
+                            const Spacer(),
+                            Padding(
+                              padding: const EdgeInsetsGeometry.all(8),
+                              child: ClipRRect(
+                                // Arrondit les angles de l'image
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.network(
+                                  entries[index],
+                                  width: 220,
+                                  height: 220,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+
+                            // Le ressort invisible qui pousse le bouton à droite
+                            const Spacer(),
+                            IconButton(
                               onPressed: () {
                                 setState(() {
-                                  entries.removeAt(
-                                    index,
-                                  ); // L'action est À L'INTÉRIEUR !
+                                  entries.removeAt(index);
                                 });
                               },
                               icon: const Icon(Icons.remove_circle),
                               color: Colors.red[400],
                             ),
-                          ),
+                          ],
+                        ),
+                        const Text(
+                          '⭐⭐⭐⭐⭐',
+                          textAlign: TextAlign.center,
+                          textScaler: TextScaler.linear(2),
                         ),
                       ],
                     ),
