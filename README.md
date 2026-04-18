@@ -1,23 +1,36 @@
-# buddies_reco
+# Buddie's Reco
 
 A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 
 ## Branch naming convention
-- *feature/<issue_id>-user-description*
-- *bugfix/<issue_id>-user-description*
-- *refactor/<issue_id>-user-description*
-- *test/<issue_id>-user-description*
+
+| Prefix | Usage |
+|--------|-------|
+| `feature/[issue_id-]short-description` | New feature |
+| `bugfix/[issue_id-]short-description` | Bug fix |
+| `hotfix/[issue_id-]short-description` | Urgent fix directly on `main` |
+| `refactor/[issue_id-]short-description` | Refactoring without functional change |
+| `test/[issue_id-]short-description` | Adding or updating tests |
+| `docs/[issue_id-]short-description` | Documentation only |
+
+> 💡 `[issue_id-]` is optional — include it when a GitHub issue exists for that task.
+
+
+## Commit Message Convention
+
+> 💡 This convention applies to **squash merge commits into `dev`** only — not to individual commits on feature branches.
+
+Format: `<type>: <short description>`
+
+| Type | Usage |
+|------|-------|
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `refactor` | Refactoring (neither a feature nor a bug fix) |
+| `style` | Formatting, whitespace, missing semicolons (no logic change) |
+| `test` | Adding or updating tests |
+| `docs` | Documentation only |
+| `chore` | Maintenance tasks (dependencies, config…) |
+| `revert` | Reverting a previous commit |
+
