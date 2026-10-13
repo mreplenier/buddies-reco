@@ -36,6 +36,7 @@ chore/upgrade-flutter-3-22
 
 
 
+<<<<<<< HEAD
 ### Commit Messages (squash merge)
  
 Merge commits follow the [Conventional Commits](https://www.conventionalcommits.org/) convention:
@@ -56,3 +57,26 @@ refactor: simplify Supabase API calls in data layer
 docs: update flutter setup guide for macOS
 chore: upgrade flutter to 3.22.0
 ```
+=======
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+
+
+
+
+## Prérequis et environnement local
+
+- **Flutter** : `3.47.4` (Dart `3.13.3`, DevTools `2.60.0`)
+- **Bundle ID** : `com.buddiesreco.app`
+
+### Android
+- **Java** : OpenJDK 17 (`brew install openjdk@17` puis lier le JDK au système)
+- **Gradle** : `8.14` (géré automatiquement via le wrapper)
+- **AGP (Android Gradle Plugin)** : `8.11.1` (configuré dans `android/settings.gradle`)
+- **KGP (Kotlin Gradle Plugin)** : `2.1.0` (configuré dans `android/settings.gradle`)
+
+### iOS
+- **Xcode** : version compatible avec iOS 15.0+ (deployment target configuré)
+- **Gestionnaire de dépendances** : Swift Package Manager
+>>>>>>> 380f69e (chore: setup project skeleton and native build configs for both android & ios (#21))
